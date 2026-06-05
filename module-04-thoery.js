@@ -152,7 +152,7 @@ console.log(user.namepostfix);
 // ================
 
 const apartment = {
-  descr: "Spacious apartment in the city center",
+  descr: 'Spacious apartment in the city center',
   rating: 4,
   price: 2153,
 };
@@ -160,9 +160,158 @@ const apartment = {
 const keys = [];
 const values = [];
 
-for (const key in apartment){
+for (const key in apartment) {
   keys.push(key);
   values.push(apartment[key]);
 }
 
-console.log(keys, values)
+console.log(keys, values);
+
+// ================
+
+function getAllPropValues(propName) {
+  const products = [
+    { name: 'Radar', price: 1300, quantity: 4 },
+    { name: 'Scanner', price: 2700, quantity: 3 },
+    { name: 'Droid', price: 400, quantity: 7 },
+    { name: 'Grip', price: 1200, quantity: 9 },
+  ];
+
+  const values = [];
+  for (const item of products) {
+    if (typeof item[propName] === 'undefined') continue;
+    values.push(item[propName]);
+  }
+
+  return values;
+}
+
+console.log(getAllPropValues('name'));
+console.log(getAllPropValues('qwe'));
+
+// ================
+
+function calculateTotalPrice(productName) {
+  const products = [
+    { name: 'Radar', price: 1300, quantity: 4 },
+    { name: 'Scanner', price: 2700, quantity: 3 },
+    { name: 'Droid', price: 400, quantity: 7 },
+    { name: 'Grip', price: 1200, quantity: 9 },
+  ];
+
+  let foundProduct;
+
+  for (const item of products) {
+    if (item.name === productName) {
+      foundProduct = item;
+    }
+  }
+
+  if (typeof foundProduct === 'undefined') {
+    return `Product ${productName} not found!`;
+  }
+  return foundProduct.price * foundProduct.quantity;
+}
+
+console.log(calculateTotalPrice('Grip'));
+console.log(calculateTotalPrice('qwe'));
+
+// ================
+
+const atTheOldToad = {
+  potions: [
+    { name: 'Speed potion', price: 460 },
+    { name: 'Stone skin', price: 520 },
+  ],
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(newPotion) {
+    this.potions.push(newPotion);
+  },
+  getTotalPrice() {
+    let totalPrice = 0;
+    for (const item of this.potions) {
+      totalPrice += item.price;
+    }
+    return totalPrice;
+  },
+  updatePotionName(oldName, newName) {
+    for (const item of this.potions) {
+      if (item.name === oldName) {
+        item.name = newName;
+        // break;
+      }
+    }
+  },
+};
+
+console.log(atTheOldToad.getTotalPrice());
+
+// ================
+
+function add(...args) {
+  let sum = 0;
+  for (const item of args) {
+    sum += item;
+  }
+  return sum;
+}
+
+console.log(add(1, 2, 3));
+
+// ================
+
+function addOverNum(value, ...args) {
+  let sum = 0;
+  for (const item of args) {
+    if (value < item) sum += item;
+  }
+  return sum;
+}
+console.log(addOverNum(2, 1, 3, 4));
+
+// ================
+
+const temps = [14, -4, 25, 8, 11];
+
+console.log(temps); // [14, -4, 25, 8, 11]
+// Так не спрацює, тому що передаємо цілий масив
+console.log(Math.max(temps)); // NaN
+
+console.log(...temps); // 14 -4 25 8 11  набір окремих чисел
+// Передамо колекцію елементів у якості окремих аргументів
+console.log(Math.max(...temps)); // 25
+
+// ================
+
+function getExtremeScores(scores) {
+  const best = Math.max(...scores);
+  const worst = Math.min(...scores);
+  // const obj = {
+  //   best: best,
+  //   worst: worst,
+  // };
+  const obj = {
+    best,
+    worst,
+  };
+  return obj;
+}
+console.log(getExtremeScores([89, 64, 42, 17, 93, 51, 26]));
+
+// ================
+
+const firstGroupScores = [64, 42, 93];
+const secondGroupScores = [89, 14, 51, 26];
+const thirdGroupScores = [29, 47, 18, 97, 81];
+
+const allScores = [
+  ...firstGroupScores,
+  ...secondGroupScores,
+  ...thirdGroupScores,
+];
+const bestScore = Math.max(...allScores);
+const worstScore = Math.min(...allScores);
+
+console.log(worstScore, bestScore);
