@@ -151,7 +151,7 @@ console.log(user.namepostfix);
 
 // ================
 
-const apartment = {
+const apartment4 = {
   descr: 'Spacious apartment in the city center',
   rating: 4,
   price: 2153,
@@ -160,9 +160,9 @@ const apartment = {
 const keys = [];
 const values = [];
 
-for (const key in apartment) {
+for (const key in apartment4) {
   keys.push(key);
-  values.push(apartment[key]);
+  values.push(apartment4[key]);
 }
 
 console.log(keys, values);
