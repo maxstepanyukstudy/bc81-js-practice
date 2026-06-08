@@ -299,3 +299,206 @@ const getUsersWithAge = (users, minAge, maxAge) => {
 };
 
 console.log(getUsersWithAge(users, 30, 40));
+
+// ============
+
+const players1 = {
+  mango: 1270,
+  poly: 468,
+  ajax: 710,
+  kiwi: 244,
+};
+const playtimes = Object.values(players1); // [1270, 468, 710, 244]
+
+const totalPlayTime = playtimes.reduce(
+  // callback
+  (accumulator, item) => accumulator + item,
+  // accumulator init value
+  0
+);
+
+const averagePlayTime = totalPlayTime / playtimes.length;
+
+// ============
+
+const players2 = [
+  { name: 'Mango', playtime: 1270, gamesPlayed: 4 },
+  { name: 'Poly', playtime: 469, gamesPlayed: 2 },
+  { name: 'Ajax', playtime: 690, gamesPlayed: 3 },
+  { name: 'Kiwi', playtime: 241, gamesPlayed: 1 },
+];
+
+const totalAveragePlaytimePerGame = players2.reduce(
+  // callback
+  (acc, player) => {
+    const total = player.playtime / player.gamesPlayed;
+    return acc + total;
+  },
+  // accumulator init value
+  0
+);
+
+console.log(totalAveragePlaytimePerGame);
+
+// ==============
+
+const scores = [61, 19, 74, 35, 92, 56];
+console.log(scores);
+
+const ascendingScores = scores.toSorted((left, right) => {
+  console.log(`${left} - ${right} is ${left - right}`);
+  return left - right;
+});
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+// ===============
+
+const students2 = ['Jacob', 'Artemis', 'Solomon', 'Adrian', 'Kai', 'Ganymede'];
+console.log(students2);
+
+const inAlphabetOrder = students2.toSorted((a, b) => a.localeCompare(b));
+console.log(inAlphabetOrder); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+
+const inReversedOrder = students2.toSorted((a, b) => b.localeCompare(a));
+console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
+
+// ========
+
+const authors = [
+  'Tanith Lee',
+  'Bernard Cornwell',
+  'Robert Sheckley',
+  'Edgar Allan Poe',
+  'Howard Lovecraft',
+];
+console.log(authors);
+
+const authorsInAlphabetOrder = authors.toSorted((left, right) =>
+  left.localeCompare(right)
+);
+console.log(authorsInAlphabetOrder);
+
+const authorsInReversedOrder = authors.toSorted((left, right) =>
+  right.localeCompare(left)
+);
+console.log(authorsInReversedOrder);
+
+// =================
+
+const books2 = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    rating: 8.38,
+  },
+  {
+    title: 'Beside Still Waters',
+    author: 'Robert Sheckley',
+    rating: 8.51,
+  },
+  {
+    title: 'The Tell-Tale Heart',
+    author: 'Edgar Allan Poe',
+    rating: 7.75,
+  },
+  {
+    title: 'Redder Than Blood',
+    author: 'Tanith Lee',
+    rating: 7.94,
+  },
+  {
+    title: 'Enemy of God',
+    author: 'Bernard Cornwell',
+    rating: 8.67,
+  },
+];
+console.log(books2);
+
+const sortedByAuthorName = books2.toSorted((bookLeft, bookRight) =>
+  bookLeft.author.localeCompare(bookRight.author)
+);
+console.log(sortedByAuthorName.map(book => book.author));
+
+const sortedByReversedAuthorName = books2.toSorted((bookLeft, bookRight) =>
+  bookRight.author.localeCompare(bookLeft.author)
+);
+console.log(sortedByReversedAuthorName.map(book => book.author));
+
+const sortedByAscendingRating = books2.toSorted(
+  (bookLeft, bookRight) => bookLeft.rating - bookRight.rating
+);
+console.log(sortedByAscendingRating.map(book => book.rating));
+
+const sortedByDescentingRating = books2.toSorted(
+  (bookLeft, bookRight) => bookRight.rating - bookLeft.rating
+);
+console.log(sortedByDescentingRating.map(book => book.rating));
+
+// ==============
+
+const students3 = [
+  { name: 'Mango', score: 83, courses: ['mathematics', 'physics'] },
+  { name: 'Poly', score: 59, courses: ['science', 'mathematics'] },
+  { name: 'Ajax', score: 37, courses: ['physics', 'biology'] },
+  { name: 'Kiwi', score: 94, courses: ['literature', 'science'] },
+];
+
+const uniqueSortedCourses = students3
+  //to flat array
+  .flatMap(student => student.courses)
+  // unique
+  .filter((course, index, array) => {
+    // only unique enteries will have `true`.
+    // if the first match found earlier than index) {the element is repeating and wont be added again)
+    // first match and index must be the same
+    console.log(
+      array,
+      '\n',
+      course,
+      '\t#',
+      index,
+      '\t1st match',
+      array.indexOf(course),
+      '\tis filtered',
+      array.indexOf(course) === index
+    );
+    return array.indexOf(course) === index;
+  })
+  //sort
+  .toSorted((a, b) => a.localeCompare(b));
+
+console.log(uniqueSortedCourses); // ["biology", "science", "literature", "mathematics", "physics"]
+
+// ======================
+
+const books3 = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    rating: 8.38,
+  },
+  {
+    title: 'Beside Still Waters',
+    author: 'Robert Sheckley',
+    rating: 8.51,
+  },
+  {
+    title: 'The Tell-Tale Heart',
+    author: 'Edgar Allan Poe',
+    rating: 7.75,
+  },
+  { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+  {
+    title: 'The Dreams in the Witch House',
+    author: 'Howard Lovecraft',
+    rating: 8.67,
+  },
+];
+const MIN_BOOK_RATING = 8;
+
+const names = books3
+  .filter(b => b.rating >= MIN_BOOK_RATING)
+  .map(book => book.author)
+  .toSorted();
+
+console.log(names);
