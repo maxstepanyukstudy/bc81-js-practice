@@ -4,6 +4,10 @@ body {
   color: rgb(238, 237, 203);
 }
 
+a {
+  color: inherit;
+}
+
 h1,
 p {
   text-align: center;
