@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-12 - data-attributes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="editor">
+      <p>
+        Donec id justo. Praesent porttitor, nulla vitae posuere iaculis, arcu
+        nisl dignissim dolor, a pretium mi sem ut ipsum. Curabitur suscipit
+        suscipit tellus. Phasellus gravida semper nisi.
+      </p>
+      <div class="actions">
+        <button type="button" class="btn" data-action="save">Save text</button>
+        <button type="button" class="btn" data-action="close">
+          Close editor
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const saveBtn = document.querySelector(
+        '.editor button[data-action="save"]'
+      );
+      const closeBtn = document.querySelector(
+        '.editor button[data-action="close"]'
+      );
+
+      console.log(saveBtn.dataset.action); //save
+      console.log(closeBtn.dataset.action); //close
+    </script>
+  </body>
+</html>
+
+<!-- https://codepen.io/goit-academy/pen/vYxRXYg -->

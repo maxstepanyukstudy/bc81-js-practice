@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-06 - classList</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a class="link is-active" href="https://goit.global">GoIT</a>
+
+    <script>
+      const link = document.querySelector('.link');
+      console.log(link.classList);
+      // ["link", "is-active", length: 2, value: "link is-active"]
+
+      console.log(link.classList.contains('is-active')); // true
+      console.log(link.classList.contains('title')); // false
+
+      link.classList.add('special');
+      console.log(link.classList);
+      // ["link", "is-active", "special", length: 3, value: "link is-active special"]
+      link.classList.add('extra', 'multiple');
+      console.log(link.classList);
+
+      link.classList.remove('is-active');
+      console.log(link.classList);
+      // ["link", "special", length: 2, value: "link special"]
+      link.classList.remove('extra', 'multiple');
+      console.log(link.classList);
+
+      link.classList.toggle('is-active');
+      console.log(link.classList);
+      // ["link", "special", "is-active", length: 3, value: "link special is-active"]
+      link.classList.toggle('is-active');
+      console.log(link.classList);
+
+      link.classList.replace('special', 'regular');
+      console.log(link.classList);
+      // ["link", "regular", "is-active", length: 3, value: "link regular is-active"]
+
+      // Якщо спробувати поміняти клас, якого не існує на елементі, то це не викличе помилку. Просто нічого не поміняється.
+      link.classList.replace('nonexistant', 'no-cahnge');
+      console.log(link.classList);
+    </script>
+  </body>
+</html>

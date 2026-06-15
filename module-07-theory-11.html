@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-11 - data-attributes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <button type="button" data-action="save">Save text</button>
+    <button type="button" data-action="close">Close editor</button>
+
+    <script>
+      const saveBtn = document.querySelector('button[data-action="save"]');
+      console.log(saveBtn);
+      console.log(saveBtn.dataset.action); // "save"
+
+      const closeBtn = document.querySelector('button[data-action="close"]');
+      console.log(closeBtn);
+      console.log(closeBtn.dataset.action); // "close"
+
+      // Змінюємо значення data-action для кнопки saveBtn
+      saveBtn.dataset.action = 'update';
+      saveBtn.textContent = 'Update text (from js)'; //для відповідності
+      // Додаємо новий data-атрибут data-role
+      saveBtn.dataset.role = 'admin';
+      // Перевіримо нові значення
+      console.log(saveBtn);
+      console.log(saveBtn.dataset.action); // "update"
+      console.log(saveBtn.dataset.role); // "admin"
+    </script>
+  </body>
+</html>

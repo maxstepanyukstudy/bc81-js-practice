@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-10 - attributes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <img
+      class="image"
+      src="https://picsum.photos/id/15/320/240"
+      alt="Rocks and waterfall"
+      width="300"
+    />
+
+    <script>
+      const image = document.querySelector('.image');
+
+      console.log(image.attributes); // NamedNodeMap {0: class, 1: src, 2: alt, length: 3}
+
+      console.log(image.hasAttribute('src')); // true
+
+      console.log(image.getAttribute('alt')); // "Rocks and waterfall"
+
+      image.setAttribute('alt', 'Amazing nature');
+
+      console.log(image.getAttribute('alt')); // Amazing nature
+    </script>
+  </body>
+</html>
+
+<!-- https://codepen.io/goit-academy/pen/VwpXjga -->

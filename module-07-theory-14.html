@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-14 - DOM APi</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        margin: 24px;
+        padding: 0 15px;
+      }
+      .usernames li {
+        padding: 8px;
+        border: 2px dashed tomato;
+        text-transform: uppercase;
+      }
+      .usernames li:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Usernames</h1>
+    <ul class="usernames">
+      <li>Mango</li>
+    </ul>
+
+    <script>
+      const list = document.querySelector('.usernames');
+
+      // Adds an item to the end of the list
+      const lastItem = document.createElement('li');
+      lastItem.textContent = 'Poly';
+      list.append(lastItem);
+
+      // Adds an item to the beginning of the list
+      const firstItem = document.createElement('li');
+      firstItem.textContent = 'Ajax';
+      list.prepend(firstItem);
+    </script>
+  </body>
+</html>
+
+<!-- https://codepen.io/goit-academy/pen/WNpzoZQ -->

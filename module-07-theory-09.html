@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-09 - attributes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <img
+      class="image"
+      src="https://picsum.photos/id/15/320/240"
+      alt="Rocks and waterfall"
+      width="300"
+    />
+
+    <script>
+      const image = document.querySelector('.image');
+      console.log(image.hasAttribute('src')); // true
+      console.log(image.hasAttribute('href')); // false
+
+      console.log(image.getAttribute('alt')); // "Rocks and waterfall"
+      console.log(image.getAttribute('href')); // null
+
+      image.setAttribute('alt', 'Amazing nature');
+      console.log('alt', image.getAttribute('alt')); // Amazing nature
+
+      image.removeAttribute('alt');
+      console.log(image.hasAttribute('alt')); // false
+
+      // Отримати доступ або змінити значення деяких атрибутів елемента можна безпосередньо, звернувшись до них як до властивостей DOM-об'єкта. Це буде менш затратно за кількістю коду.
+      // А ось видалити або перевірити наявність буде зручніше, використовуючи відповідний метод.
+      console.log(image);
+      image.alt = 'test';
+      console.log(image);
+      image.removeAttribute('alt');
+    </script>
+  </body>
+</html>

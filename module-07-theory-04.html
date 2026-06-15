@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-04</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <p class="text">Username: <span class="sub-text">Mango</span></p>
+
+    <script>
+      const el = document.querySelector('.text');
+      const nested = document.querySelector('.sub-text');
+
+      console.log(el.textContent); // "Username: Mango"
+      console.log(nested.textContent); // "Mango"
+
+      el.textContent = 'Username: Poly';
+    </script>
+  </body>
+</html>

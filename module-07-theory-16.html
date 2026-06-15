@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-16 - DOM API</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <article class="article">
+      <h2 class="title">Article title</h2>
+      <p class="text">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, ipsa
+        quibusdam! Praesentium accusantium fugiat distinctio quidem minima fugit
+        eos, veniam, nam laboriosam deleniti nisi qui neque explicabo
+        perspiciatis, consectetur non.
+      </p>
+      <a class="link" href="">Read more</a>
+    </article>
+    <script>
+      const text = document.querySelector('.text');
+      text.remove();
+    </script>
+  </body>
+</html>
+
+<!-- https://codepen.io/goit-academy/pen/mdWKWoM -->

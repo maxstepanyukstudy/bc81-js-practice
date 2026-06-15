@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-03</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />  </head>
+
+  <body>
+    <img
+      class="image"
+      src="https://picsum.photos/id/9/320/240"
+      alt="A laptop"
+      width="300"
+    />
+    <script>
+      const image = document.querySelector('.image');
+      console.log(image.src); // https://picsum.photos/id/9/320/240
+      console.log(image.alt); // A laptop
+
+      image.src = 'https://picsum.photos/id/13/640/480';
+      image.alt = 'River bank';
+
+      console.log(image.src);
+      console.log(image.alt);
+    </script>
+  </body>
+</html>
+
+<!-- https://codepen.io/goit-academy/pen/poeLbbd -->

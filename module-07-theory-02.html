@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-02</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+        <link rel="stylesheet" href="style.css" />
+
+  </head>
+
+  <body>
+    <a class="link" href="https://goit.global">GoIT</a>;
+
+    <script>
+      const link = document.querySelector('.link');
+      console.log(link.href); // "https://goit.global"
+
+      link.href = 'https://neo.goit.global';
+      console.log(link.href); // "https://neo.goit.global"
+    </script>
+  </body>
+</html>

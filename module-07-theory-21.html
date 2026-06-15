@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-21 - DOM API - insert-adjacent-html</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .list {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+      }
+
+      .list-item {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        border-width: 2px;
+        border-style: dashed;
+      }
+
+      .list-item.new::before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background-color: green;
+      }
+
+      .list-item:nth-child(even) {
+        border-color: tomato;
+      }
+
+      .list-item:nth-child(odd) {
+        border-color: blueviolet;
+      }
+
+      .list-item:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="list">
+      <li class="list-item">HTML</li>
+      <li class="list-item">CSS</li>
+      <li class="list-item">JavaScript</li>
+    </ul>
+
+    <script>
+      const list = document.querySelector('.list');
+
+      list.insertAdjacentHTML('beforebegin', '<h2>Popular technologies</h2>');
+
+      const newTechnologies = ['React', 'TypeScript', 'Node.js'];
+      const markup = newTechnologies
+        .map(technology => `<li class="list-item new">${technology}</li>`)
+        .join('');
+
+      list.insertAdjacentHTML('beforeend', markup);
+    </script>
+  </body>
+</html>
+<!-- https://codepen.io/goit-academy/pen/QWpxvqR -->

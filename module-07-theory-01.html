@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-01</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    />
+
+        <link rel="stylesheet" href="style.css" />
+
+  </head>
+
+  <body>
+    <ul id="menu" class="menu">
+      <li class="menu-item">home</li>
+      <li class="menu-item">about</li>
+      <li class="menu-item">gallery</li>
+      <li>blog</li>
+    </ul>
+    <script>
+      const listWithId = document.querySelector('#menu');
+      listWithId.style.textTransform = 'uppercase';
+      listWithId.style.fontSize = '24px';
+      console.log(listWithId);
+
+      const listWithClass = document.querySelector('.menu');
+      console.log(listWithClass);
+
+      const menuItemsByTagName = document.querySelectorAll('li');
+      console.log(menuItemsByTagName);
+
+      const menuItemsByClass = document.querySelectorAll('.menu-item');
+      console.log(menuItemsByClass);
+
+      const firstMenuItem = document.querySelector('.menu-item');
+      firstMenuItem.style.color = 'tomato';
+      console.log(firstMenuItem);
+    </script>
+  </body>
+</html>
+
+<!-- https://codepen.io/goit-academy/pen/wvJmGbG -->

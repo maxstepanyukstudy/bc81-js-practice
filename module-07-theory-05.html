@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-04 - textContent</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <article class="article">
+      <h2 class="article-title">Welcome to Hawaii!</h2>
+      <p class="article-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+        quaerat nemo veritatis quasi eius eum aliquid, nobis dolore nisi, magnam
+        eaque iusto, necessitatibus atque laborum quam tempora ducimus dicta
+        ipsam.
+      </p>
+    </article>
+
+    <script>
+      const textEl = document.querySelector('.article-text');
+      console.log(textEl.textContent); // text inside p.article-text
+
+      const titleEl = document.querySelector('.article-title');
+      titleEl.textContent = 'Welcome to Bahamas!';
+    </script>
+  </body>
+</html>
+
+<!-- https://codepen.io/goit-academy/pen/wvJmWqd -->

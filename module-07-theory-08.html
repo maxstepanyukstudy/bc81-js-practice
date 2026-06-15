@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-08 - style</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <button type="button" class="btn">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo, temporibus?</button>
+    <script>
+      const button = document.querySelector('.btn');
+
+      button.style.backgroundColor = 'brown';
+      button.style.color = 'white';
+      button.style.fontSize = '24px';
+      button.style.textAlign = 'center';
+
+      button.style.padding = '12px';
+
+      console.log(button.style); // inline styles object
+    </script>
+  </body>
+</html>
