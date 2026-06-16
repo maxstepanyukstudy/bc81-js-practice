@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-23 - removeEventListener</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        padding: 16px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="/">home</a>
+
+    <button class="btn js-add">Add Listener</button>
+    <button class="btn js-remove">Remove Listener</button>
+    <hr />
+    <button class="btn target-btn">Click me</button>
+    <ul class="js-list"></ul>
+
+    <script>
+      const addListenerBtn = document.querySelector('.js-add');
+      const removeListenerBtn = document.querySelector('.js-remove');
+      const btn = document.querySelector('.target-btn');
+      const list = document.querySelector('.js-list');
+
+      function logAppend(msg) {
+        console.log(msg);
+        const liMarkup = `<li>${msg}</li>`;
+        list.insertAdjacentHTML('beforeend', liMarkup);
+      }
+
+      const handleClick = () => {
+        logAppend('click event listener callback');
+      };
+
+      addListenerBtn.addEventListener('click', () => {
+        btn.addEventListener('click', handleClick);
+
+        logAppend('click event listener was added to btn');
+      });
+
+      removeListenerBtn.addEventListener('click', () => {
+        btn.removeEventListener('click', handleClick);
+        logAppend('click event listener was removed from btn');
+      });
+    </script>
+  </body>
+</html>
+<!-- https://codepen.io/goit-academy/pen/QWpxOvE -->

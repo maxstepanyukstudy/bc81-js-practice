@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-29 - input-event & change-event</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link
+      rel="stylesheet"
+      href="https://public.codepenassets.com/css/normalize-5.0.0.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a href="/">home</a>
+
+    <input type="text" class="text-input" placeholder="input event" />
+    <input type="text" class="change-input" placeholder="change event" />
+    <p>
+      Text field value:
+      <span class="output"></span>
+    </p>
+
+    <script>
+      const textInput = document.querySelector('.text-input');
+      const changeInput = document.querySelector('.change-input');
+
+      const output = document.querySelector('.output');
+
+      textInput.addEventListener('input', update);
+      changeInput.addEventListener('change', update);
+
+      function update(event) {
+        output.textContent = event.currentTarget.value;
+      }
+    </script>
+  </body>
+</html>
+<!-- https://codepen.io/goit-academy/pen/jOBKpNP -->

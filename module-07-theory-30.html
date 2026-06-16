@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-30 - focus-events</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://public.codepenassets.com/css/normalize-5.0.0.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        margin: 16px;
+        line-height: 1.5;
+        font-family: sans-serif;
+        letter-spacing: 0.5px;
+      }
+
+      input {
+        width: 100%;
+        max-width: 320px;
+        padding: 8px;
+        font: inherit;
+        letter-spacing: inherit;
+      }
+
+      button {
+        display: inline-flex;
+        padding: 4px;
+        margin-right: 2px;
+        margin-left: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="/">home</a>
+
+    <button type="button" data-action="set">Set focus to input</button>
+    <button type="button" data-action="remove">Remove focus from input</button>
+    <input type="text" class="text-input" placeholder="focus me" />
+
+    <script>
+      const textInput = document.querySelector('.text-input');
+      const setFocusBtn = document.querySelector('[data-action="set"]');
+      const removeFocusBtn = document.querySelector('[data-action="remove"]');
+
+      setFocusBtn.addEventListener('click', setTextFocus);
+      function setTextFocus() {
+        textInput.focus();
+      }
+
+      removeFocusBtn.addEventListener('click', setTextBlur);
+      function setTextBlur() {
+        textInput.blur();
+      }
+
+      textInput.addEventListener('focus', onTextFocus);
+      function onTextFocus() {
+        textInput.value = 'This input has focus';
+      }
+
+      textInput.addEventListener('blur', onTextBlur);
+      function onTextBlur() {
+        textInput.value = 'This input has blur';
+      }
+    </script>
+  </body>
+</html>
+<!-- https://codepen.io/goit-academy/pen/JjWZBdM -->

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-26 - event keyboard</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+      .log-list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .log-item {
+        /* flex-basis: calc((100% - 32px) / 4); */
+        width: 180px;
+        position: relative;
+        padding: 4px;
+        border: 1px solid #2a2a2a;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: monospace;
+      }
+      .log-item > .chip {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 20px;
+        height: 20px;
+        background-color: rgb(144, 86, 0);
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      button {
+        display: inline-flex;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-family: inherit;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="/">home</a>
+
+    <h1 class="title">press any key</h1>
+    <button type="button" class="js-clear">Clear output</button>
+    <div class="log-list"></div>
+
+    <script>
+      const clearLogBtn = document.querySelector('.js-clear');
+      const logList = document.querySelector('.log-list');
+      let keypressCounter = 1;
+
+      console.log(clearLogBtn);
+
+      document.addEventListener('keydown', logMessage);
+      document.addEventListener('keyup', logMessage);
+      clearLogBtn.addEventListener('click', reset);
+
+      function logMessage({ type, key, code }) {
+        const markup = ` 
+          <div class="log-item">
+            <span class="chip">${keypressCounter}</span>
+            <ul>
+              <li><b>Event</b>: ${type}</li>
+              <li><b>Key</b>: ${key}</li>
+              <li><b>Code</b>: ${code}</li>
+            </ul>
+          </div>`;
+
+        logList.insertAdjacentHTML('afterbegin', markup);
+
+        if (type === 'keyup') {
+          incrementKeypressCounter();
+        }
+      }
+
+      function reset() {
+        keypressCounter = 1;
+        logList.innerHTML = '';
+      }
+
+      function incrementKeypressCounter() {
+        keypressCounter += 1;
+      }
+    </script>
+  </body>
+</html>
+<!-- [https://codepen.io/goit-academy/pen/ZEeRxaJ -->

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-23 - addEventListener</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 1rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="/">home</a>
+
+    <button id="single" class="btn">SINGLE CALLBACK</button>
+    <hr />
+    <button id="multiple" class="btn">MULTIPLE CALLBACKS</button>
+
+    <script>
+      const singleBtn = document.querySelector('#single');
+
+      function handleClick() {
+        console.log('click event listener callback');
+      }
+
+      singleBtn.addEventListener('click', handleClick);
+
+      // ===============================================
+      const multiBtn = document.querySelector('#multiple');
+
+      function firstCallback() {
+        console.log('First callback!');
+      }
+      function secondCallback() {
+        console.log('Second callback!');
+      }
+      function thirdCallback() {
+        console.log('Third callback!');
+      }
+
+      multiBtn.addEventListener('click', firstCallback);
+      multiBtn.addEventListener('click', secondCallback);
+      multiBtn.addEventListener('click', thirdCallback);
+    </script>
+  </body>
+</html>
+<!-- https://codepen.io/goit-academy/pen/QWpxOvE -->

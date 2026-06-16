@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 07-28 - change-event</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link
+      rel="stylesheet"
+      href="https://public.codepenassets.com/css/normalize-5.0.0.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a href="/">home</a>
+
+    <p>
+      Selected option text:
+      <span class="text-output">none</span>
+    </p>
+
+    <p>
+      Selected option index:
+      <span class="index-output">none</span>
+    </p>
+
+    <p>
+      Selected option value:
+      <span class="value-output">none</span>
+    </p>
+
+    <select class="pizza-select">
+      <option value="four_meats">Four Meats</option>
+      <option value="royal_cheese">Royal Cheese</option>
+      <option value="vegetarian">Vegetarian</option>
+      <option value="smoked_salmon">Smoked Salmon</option>
+    </select>
+
+    <script>
+      const select = document.querySelector('.pizza-select');
+      select.addEventListener('change', setOutput);
+
+      const textOutput = document.querySelector('.text-output');
+      const valueOutput = document.querySelector('.value-output');
+      const indexOutput = document.querySelector('.index-output');
+
+      function setOutput(event) {
+        const selectedOptionValue = event.currentTarget.value;
+        valueOutput.textContent = selectedOptionValue;
+
+        const selectedOptionIndex = event.currentTarget.selectedIndex;
+        indexOutput.textContent = selectedOptionIndex;
+
+        const selectedOptionText =
+          event.currentTarget.options[selectedOptionIndex].text;
+        textOutput.textContent = selectedOptionText;
+      }
+    </script>
+  </body>
+</html>
+<!-- https://codepen.io/goit-academy/pen/oNZydVL -->
