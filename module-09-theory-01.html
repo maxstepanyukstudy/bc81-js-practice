@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BC81 JS Practice - 09-01 - feedback form</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style></style>
+  </head>
+
+  <body>
+    <a href="/">home</a>
+
+    <form class="feedback-form">
+      <textarea name="message"></textarea>
+      <button type="submit">Send feedback</button>
+    </form>
+
+    <script>
+      const form = document.querySelector('.feedback-form');
+      const textarea = form.elements.message;
+      const localStorageKey = 'module-09-theory-01-goit-example-message';
+
+      // код читання збереженого повідомлення з локального сховища і встановлення його початковим значенням для текстового поля під час завантаження сторінки.
+      textarea.value = localStorage.getItem(localStorageKey) ?? '';
+
+      form.addEventListener('input', evt => {
+        localStorage.setItem(localStorageKey, evt.target.value);
+      });
+
+      form.addEventListener('submit', evt => {
+        evt.preventDefault();
+        console.log(evt.target.elements.message.value);
+        localStorage.removeItem(localStorageKey);
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
+<!-- https://codepen.io/goit-academy/pen/XWMozzv?editors=1010 -->
