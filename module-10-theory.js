@@ -185,3 +185,201 @@ promise4
     console.log("finally");
   });
 
+// ==================
+
+// ми передаємо щось усередину функції (колбеки) і сподіваємося, що воно відпрацює правильно, що ненадійно. Давай промісифікуємо її.
+function fetchUserFromServerCallbackc(username, onSuccess, onError) {
+  console.log(`Fetching data for ${username}`);
+
+  setTimeout(() => {
+    // Change value of isSuccess variable to simulate request status
+    const isSuccess = true;
+
+    if (isSuccess) {
+      onSuccess('success value ' + username);
+    } else {
+      onError('error ' + username);
+    }
+  }, 2000);
+}
+
+fetchUserFromServerCallbackc(
+  'Mango',
+  user => console.log(user),
+  error => console.error(error)
+);
+
+// ================
+
+const fetchUserFromServerPromise = username => {
+  return new Promise((resolve, reject) => {
+    console.log(`Fetching data for ${username}`);
+
+    setTimeout(() => {
+      // Change value of isSuccess variable to simulate request status
+      const isSuccess = true;
+
+      if (isSuccess) {
+        resolve('success value ' + username); // значенням параметра resolve буде колбек-функція методу then()
+      } else {
+        reject('error ' + username); // значенням параметра reject буде колбек-функція методу catch()
+      }
+    }, 2000);
+  });
+};
+
+fetchUserFromServerPromise('Mango')
+  .then(user => console.log(user))
+  .catch(error => console.error(error));
+
+// =================
+
+function fetchUserFromServerPromiseVerbose(username) {
+  return new Promise(executor);
+  function executor(resolve, reject) {
+    console.log(`Fetching data for ${username}`);
+    setTimeout(settlePromice, 2000);
+    function settlePromice() {
+      const isSuccess = false;
+      if (isSuccess) {
+        resolve('success value ' + username);
+      } else {
+        reject('error ' + username);
+      }
+    }
+  }
+}
+
+fetchUserFromServerPromiseVerbose('Jambo')
+  .then(user => console.log(user))
+  .catch(error => console.error(error));
+
+// ============
+
+Promise.resolve('success value')
+  .then(value => console.log(value))
+  .catch(error => console.log(error));
+
+Promise.reject('error')
+  .then(value => console.log(value))
+  .catch(error => console.log(error));
+
+// ==================
+
+const makeGreetingSync = (guestName, onSuccess, onError) => {
+  if (!guestName) {
+    onError('Guest name must not be empty');
+  } else {
+    onSuccess(`Welcome ${guestName}`);
+  }
+};
+
+makeGreetingSync(
+  'Mango',
+  greeting => console.log(greeting),
+  error => console.error(error)
+);
+
+// // ========
+
+function makeGreetingPromice(guestName) {
+  if (!guestName) {
+    return Promise.reject('Guest name must not be empty');
+  } else {
+    return Promise.resolve(`Welcome ${guestName}`);
+  }
+}
+
+makeGreetingPromice('Mango')
+  .then(greeting => console.log(greeting))
+  .catch(error => console.error(error));
+
+// =================
+
+const makePromise = ({ value, delay, shouldResolve = true }) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve(value);
+      } else {
+        reject(value);
+      }
+    }, delay);
+  });
+};
+
+makePromise({ value: 'A', delay: 1000 })
+  .then(value => console.log(value)) // "A"
+  .catch(error => console.log(error));
+
+makePromise({ value: 'B', delay: 3000 })
+  .then(value => console.log(value)) // "B"
+  .catch(error => console.log(error));
+
+makePromise({ value: 'C', delay: 2000, shouldResolve: false })
+  .then(value => console.log(value))
+  .catch(error => console.log(error)); // "C"
+
+// ================
+
+//wont work cos it cant return promive like that
+const makePromise2 = ({ value, delay, shouldResolve = true }) => {
+  function executor() {
+    if (shouldResolve) {
+      return Promise.resolve(value);
+    } else {
+      return Promise.reject(value);
+    }
+  }
+  setTimeout(executor, delay);
+
+};
+
+// makePromise2({ value: 'A', delay: 1000 })
+//   .then(value => console.log(value)) // "A"
+//   .catch(error => console.log(error));
+
+// ========================
+
+// see the order
+debugger;
+// 1st - ass sync code
+// 2nd - all async (code inside Promises than dendlers)
+
+const p1 = Promise.resolve(1);
+const p2 = Promise.reject('Rejected promise 2');
+const p3 = Promise.resolve(3);
+const p4 = Promise.reject('Rejected promise 4');
+
+Promise.all([p1, p2, p3, p4])
+  .then(values => console.log(values))
+  .catch(error => console.log(error)); // "Rejected promise 2"
+
+Promise.all([p1, p3])
+  .then(values => console.log(values))
+  .catch(error => console.log(error)); // "Rejected promise 2"
+
+Promise.all([p4, p2])
+  .then(values => console.log(values))
+  .catch(error => console.log(error)); // "Rejected promise 4"
+
+Promise.allSettled([p1, p2, p3, p4]).then(values => console.log(values));
+Promise.allSettled([p4, p2, p3, p1]).then(values => console.log(values));
+
+Promise.allSettled([p1, p3]).then(values => console.log(values));
+
+Promise.allSettled([p2, p4]).then(values => console.log(values));
+
+// ============
+
+const p1_2 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve(1), 1000);
+});
+
+const p2_2 = new Promise((resolve, reject) => {
+  setTimeout(() => reject(2), 500);
+});
+
+Promise.race([p1_2, p2_2])
+  .then(value => console.log(value)) // 1
+  .catch(error => console.error(error));
