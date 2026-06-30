@@ -264,6 +264,16 @@ Promise.reject('error')
   .then(value => console.log(value))
   .catch(error => console.log(error));
 
+
+// no need for anaon arrow here
+Promise.resolve('success value')
+  .then(console.log)
+  .catch(console.log);
+
+  Promise.reject('error')
+  .then(console.log)
+  .catch(console.log);
+
 // ==================
 
 const makeGreetingSync = (guestName, onSuccess, onError) => {
